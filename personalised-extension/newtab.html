@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- title removed -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="bg-overlay"></div>
+
+  <main class="container">
+    <!-- Left: Google search -->
+    <section class="left-pane">
+      <form id="google-form" action="https://www.google.com/search" method="GET" target="_blank" autocomplete="off">
+        <input id="q" name="q" type="search" placeholder="Search Google or type a URL" autofocus />
+      </form>
+      <!-- Shortcuts Section at leftmost bottom, static links with favicons -->
+      <!-- Shortcuts box moved outside main container for left-bottom placement -->
+    </section>
+
+    <!-- Right: streak cards -->
+    <aside class="right-pane">
+      <!-- TryHackMe Badge -->
+      <div class="card thm-card-glass" id="thm-card">
+        <div class="card-title" style="margin-bottom:4px;">TryHackMe Streak</div>
+        <div class="card-body thm-body-glass">
+          <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3397377" class="thm-iframe-glass" scrolling="no" frameborder="0"></iframe>
+        </div>
+      </div>
+
+      <!-- GitHub Contributions SVG -->
+      <div class="card adaptive-card" id="gh-card">
+        <div class="card-title">GitHub Contributions</div>
+        <div class="card-body gh-graph-flex" id="gh-graph">
+          <div class="gh-contrib-texts">
+            <div id="gh-contrib-this" class="contrib-count-value">Loading...</div>
+            <div id="gh-contrib-last" class="contrib-count-value" style="margin-top:10px;">Loading...</div>
+          </div>
+            <div class="gh-logo-img-wrap" style="display:none;">
+            </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="newtab.js"></script>
+  <!-- Shortcuts box at leftmost bottom -->
+  <div id="shortcuts-section" class="card glass-shortcuts shortcuts-bottom">
+    <div class="shortcuts-title">Shortcuts</div>
+    <div class="shortcuts-list">
+      <a class="shortcut-link static-shortcut" href="https://tryhackme.com/" target="_blank">
+        <img class="shortcut-favicon" src="https://www.google.com/s2/favicons?domain=tryhackme.com" alt="" /> tryhackme.com
+      </a>
+      <a class="shortcut-link static-shortcut" href="https://monkeytype.com/" target="_blank">
+        <img class="shortcut-favicon" src="https://www.google.com/s2/favicons?domain=monkeytype.com" alt="" /> monkeytype.com
+      </a>
+      <a class="shortcut-link static-shortcut" href="https://github.com/" target="_blank">
+        <img class="shortcut-favicon" src="https://www.google.com/s2/favicons?domain=github.com" alt="" /> github.com
+      </a>
+      <a class="shortcut-link static-shortcut" href="https://linkedin.com/" target="_blank">
+        <img class="shortcut-favicon" src="https://www.google.com/s2/favicons?domain=linkedin.com" alt="" /> linkedin.com
+      </a>
+      <a class="shortcut-link static-shortcut" href="https://medium.com/" target="_blank">
+        <img class="shortcut-favicon" src="https://www.google.com/s2/favicons?domain=medium.com" alt="" /> medium.com
+      </a>
+    </div>
+  </div>
+</body>
+</html>
