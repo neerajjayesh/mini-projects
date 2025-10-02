@@ -1,6 +1,6 @@
-# ESP8266 Captive Portal
+# ESP8266 Honeypot
 
-A simple **WiFi captive portal** for ESP8266 with credential storage using **LittleFS**.  
+A simple **WiFi Honeypot** for ESP8266 with credential storage using **LittleFS**.  
 When users connect to the AP, they are redirected to a styled signup page where they enter **name, mobile, and password**. Data is stored and can be viewed or cleared via the web interface.
 
 ---
