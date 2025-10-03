@@ -1,0 +1,434 @@
+/* Center the options page card and override container for options.html */
+body.options-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.options-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Glassmorphic input for options page */
+.glass-input {
+  width: 90%;
+  max-width: 320px;
+  min-width: 160px;
+  margin: 0 auto;
+  padding: 14px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  font-size: 1.08rem;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(6,6,20,0.13);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition: background 0.2s, color 0.2s;
+}
+.glass-input:focus {
+  background: rgba(255,255,255,0.32);
+  color: #222;
+}
+.glass-input::placeholder {
+  color: #eee;
+  opacity: 0.8;
+}
+/* Hide Chrome's bottom bar and customize button in new tab */
+body::-webkit-scrollbar,
+#customize-chrome-bottom-bar,
+cr-customize-chrome-bottom-bar,
+cr-toolbar,
+cr-footer,
+cr-button,
+cr-customize-chrome-button,
+cr-customize-chrome-bar,
+cr-customize-chrome-bar *,
+cr-customize-chrome-footer,
+cr-customize-chrome-footer *,
+cr-customize-chrome,
+cr-customize-chrome * {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  pointer-events: none !important;
+}
+html, body {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+/* Shortcuts section styles */
+.glass-shortcuts {
+  margin-top: 18px;
+  margin-bottom: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 30px rgba(10,10,30,0.18);
+  padding: 16px 18px 10px 18px;
+  max-width: 340px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.shortcuts-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+/* Shortcuts list for static links with favicons */
+.shortcuts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 0;
+  width: 100%;
+}
+.shortcut-link.static-shortcut {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  background: rgba(0,0,0,0.13);
+  padding: 6px 14px 6px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.04rem;
+  font-weight: 500;
+  transition: background 0.18s;
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  min-width: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.shortcut-link.static-shortcut:hover {
+  background: rgba(0,0,0,0.22);
+}
+.shortcut-favicon {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  margin-right: 2px;
+  background: #fff2;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  flex-shrink: 0;
+}
+
+/* Position shortcuts box at leftmost bottom */
+.shortcuts-bottom {
+  position: fixed;
+  left: 32px;
+  bottom: 32px;
+  z-index: 100;
+  min-width: 220px;
+  max-width: 320px;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: flex-start;
+  padding: 16px 18px 12px 18px;
+  margin: 0;
+}
+#dynamic-logo {
+  filter: none !important;
+  -webkit-filter: none !important;
+  image-rendering: auto;
+  background: transparent;
+}
+#google-form input[type="search"] {
+  color: #fff !important;
+}
+
+#google-form input[type="search"]::placeholder {
+  color: #fff !important;
+  opacity: 0.85;
+}
+/* Flex layout for GitHub card body */
+
+.gh-logo-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  min-width: 44px;
+}
+
+/* Style for GitHub contributions count value */
+.contrib-count-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 8px;
+  margin-bottom: 4px;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+  text-align: left;
+  white-space: pre-line;
+}
+
+
+/* Zoom in on GitHub contributions SVG */
+#gh-contrib-img {
+  transform: scale(1.5);
+  transform-origin: top left;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: block;
+}
+/* --- TryHackMe exact fit styles --- */
+/* --- TryHackMe exact fit styles --- */
+
+
+.thm-card-glass {
+  width: 360px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 30px rgba(10,10,30,0.25);
+  padding: 14px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  overflow: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+.thm-card-glass::-webkit-scrollbar {
+  display: none;
+}
+
+
+.thm-body-glass {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.thm-body-glass::-webkit-scrollbar {
+  display: none;
+}
+
+
+.thm-iframe-glass {
+  width: 100%;
+  height: 90px;
+  border-radius: 10px;
+  border: none;
+  display: block;
+  background: transparent;
+  overflow: hidden;
+  margin: 0 auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.thm-iframe-glass::-webkit-scrollbar {
+  display: none;
+}
+:root{
+  --glass-bg: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.12);
+  --accent: rgba(255,255,255,0.9);
+  --muted: rgba(255,255,255,0.7);
+  --card-width: 300px;
+  --radius: 14px;
+}
+
+/* Full-bleed background image with subtle overlay */
+html,body{
+  height:100%;
+  margin:0;
+  font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+  color: white;
+}
+
+body{
+  background-image: linear-gradient(135deg, rgba(6, 21, 46, 0.45), rgba(36, 11, 54, 0.35));
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
+  /* a nice aesthetic default image (Unsplash) - replace as you like */
+  background-image: url("https://images.unsplash.com/photo-1508138221679-760a23a2285b?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f9c7b9f2e3f36f2f3ea9b0af1f9b1d5"), linear-gradient(135deg, rgba(6,21,46,0.45), rgba(36,11,54,0.35));
+  min-height:100vh;
+  display:flex;
+  align-items:stretch;
+}
+
+/* glass overlay for better readability */
+#bg-overlay{
+  position:fixed;
+  inset:0;
+  backdrop-filter: blur(6px) saturate(1.05);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events:none;
+}
+
+/* overall container horizontally spaced */
+.container{
+  display:flex;
+  justify-content:space-between;
+  width:100%;
+  padding:48px;
+  box-sizing:border-box;
+  gap:32px;
+}
+
+/* left pane — left-aligned search */
+.left-pane{
+  flex:1 1 60%;
+  display:flex;
+  align-items:flex-start;
+}
+
+/* Search box style */
+#google-form{
+  max-width:720px;
+  width:100%;
+}
+
+/* Improved search bar for clarity */
+
+#google-form input[type="search"]{
+  width:100%;
+  padding:22px 18px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.18);
+  color:#fff;
+  font-size:20px;
+  outline:none;
+  box-shadow: 0 6px 24px rgba(6,6,20,0.25);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition: background 0.2s, color 0.2s;
+}
+
+#google-form input[type="search"]:focus{
+  background: rgba(255,255,255,0.35);
+  color:#111;
+}
+
+#google-form input[type="search"]::placeholder{
+  color: #444;
+  opacity: 0.7;
+}
+
+/* small hint */
+.hint{
+  margin-top:10px;
+  color: rgba(255,255,255,0.65);
+  font-size:13px;
+}
+
+/* right pane */
+.right-pane{
+  width: var(--card-width);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  align-items:flex-end;
+}
+
+/* glassy cards */
+
+/* Adaptive card styles */
+.card, .adaptive-card {
+  width:100%;
+  min-height:140px;
+  border-radius:var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border:1px solid var(--glass-border);
+  padding:14px;
+  box-shadow: 0 8px 30px rgba(10,10,30,0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.card-title {
+  font-size:13px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom:6px;
+  font-weight:600;
+}
+
+.card-body, .adaptive-body {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  align-items:stretch;
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+
+.thm-iframe {
+  width: 100%;
+  min-width: 220px;
+  max-width: 100%;
+  height: 140px;
+  min-height: 120px;
+  max-height: 180px;
+  border-radius: 10px;
+  border: none;
+  display: block;
+  background: #fff;
+  overflow: visible;
+}
+
+/* streak number style */
+.streak-value{
+  font-size:28px;
+  font-weight:700;
+  color:var(--accent);
+}
+
+/* small messages */
+.msg{
+  font-size:12px;
+  color: rgba(255,255,255,0.7);
+}
+
+/* fallback iframe styling if used */
+.fallback iframe{
+  width:100%;
+  height:80px;
+  border-radius:10px;
+  border:none;
+  overflow:hidden;
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .container{
+    flex-direction:column;
+    padding:24px;
+  }
+  .left-pane{ order:1; width:100%; }
+  .right-pane{ order:2; width:100%; flex-direction:row; justify-content:space-between; }
+  .card{ width:48%; }
+}
