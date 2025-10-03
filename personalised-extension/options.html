@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Distraction Blocker Settings</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    label { display:block; margin: 10px 0 4px; font-weight: bold; }
+    input { width: 100%; padding: 6px; }
+    button { margin-top: 15px; padding: 8px 12px; }
+  </style>
+</head>
+<body>
+  <h1>Extension Settings</h1>
+  <form id="settings-form">
+    <label for="thm">TryHackMe Public ID:</label>
+    <input id="thm" type="text"/>
+
+    <label for="gh">GitHub Username:</label>
+    <input id="gh" type="text"/>
+
+  <label for="bg">Background Image URL:</label>
+  <input id="bg" type="url"/>
+
+  <label for="ghtoken">GitHub Personal Access Token:</label>
+  <input id="ghtoken" type="password" autocomplete="off"/>
+
+  <button type="submit">Save</button>
+  </form>
+  <div id="status"></div>
+  <script src="options.js"></script>
+</body>
+</html>
