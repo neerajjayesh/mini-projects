@@ -9,6 +9,8 @@
 <body>
   <div id="bg-overlay"></div>
 
+  <!-- Settings button -->
+  <!-- Settings button moved to end of body for reliable script access -->
   <main class="container">
     <!-- Left: Google search -->
     <section class="left-pane">
@@ -25,7 +27,7 @@
       <div class="card thm-card-glass" id="thm-card">
         <div class="card-title" style="margin-bottom:4px;">TryHackMe Streak</div>
         <div class="card-body thm-body-glass">
-          <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3397377" class="thm-iframe-glass" scrolling="no" frameborder="0"></iframe>
+          <iframe id="thm-iframe" src="" class="thm-iframe-glass" scrolling="no" frameborder="0"></iframe>
         </div>
       </div>
 
@@ -44,6 +46,9 @@
     </aside>
   </main>
 
+  <button id="settings-btn" title="Extension Settings" style="position:fixed;bottom:36px;right:36px;z-index:200;background:rgba(255,255,255,0.13);border:1px solid var(--glass-border);border-radius:50%;width:54px;height:54px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.13);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;transition:background 0.18s;padding:0;">
+    <img src="icons/setting.png" alt="Settings" style="width:30px;height:30px;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.13));user-select:none;pointer-events:none;" draggable="false" />
+  </button>
   <script src="newtab.js"></script>
   <!-- Shortcuts box at leftmost bottom -->
   <div id="shortcuts-section" class="card glass-shortcuts shortcuts-bottom">
