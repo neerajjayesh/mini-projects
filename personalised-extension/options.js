@@ -1,6 +1,6 @@
   const defaults = {
-    tryhackmeId: "3397377",
-    githubUsername: "neerajjayesh",
+    tryhackmeId: "",
+    githubUsername: "",
     backgroundUrl: "https://images.unsplash.com/photo-1508138221679-760a23a2285b?q=80&w=1920&auto=format&fit=crop"
   };
 
@@ -31,8 +31,8 @@
 ;
 document.addEventListener("DOMContentLoaded", () => {
   const defaults = {
-    tryhackmeId: "3397377",
-    githubUsername: "neerajjayesh",
+    tryhackmeId: "",
+    githubUsername: "",
     backgroundUrl: "https://images.unsplash.com/photo-1508138221679-760a23a2285b?q=80&w=1920&auto=format&fit=crop",
     githubToken: ""
   };
