@@ -1,10 +1,20 @@
 document.addEventListener("DOMContentLoaded", async () => {
   // Set the tab title
   document.title = "New tab";
-  // Defaults
+  // Settings button handler (CSP safe)
+  var btn = document.getElementById('settings-btn');
+  if (btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open('options.html', '_blank');
+    });
+  }
+
+  // Defaults (no sensitive info)
   const defaults = {
-    tryhackmeId: "3397377",
-    githubUsername: "neerajjayesh",
+    tryhackmeId: "",
+    githubUsername: "",
+    githubToken: "",
     backgroundUrl: "https://images.unsplash.com/photo-1508138221679-760a23a2285b?q=80&w=1920&auto=format&fit=crop"
   };
 
@@ -14,11 +24,26 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Apply background
   document.body.style.backgroundImage = `url("${settings.backgroundUrl}")`;
 
+  // Dynamically set TryHackMe iframe src
+  var thmIframe = document.getElementById('thm-iframe');
+  if (thmIframe) {
+    if (settings.tryhackmeId && settings.tryhackmeId.trim() !== "") {
+      thmIframe.src = `https://tryhackme.com/api/v2/badges/public-profile?userPublicId=${encodeURIComponent(settings.tryhackmeId.trim())}`;
+    } else {
+      thmIframe.src = "";
+    }
+  }
+
   // Fetch and display GitHub contributions for the current month using GraphQL API
   const ghDivThis = document.getElementById("gh-contrib-this");
   const ghDivLast = document.getElementById("gh-contrib-last");
-  const username = settings.githubUsername || "neerajjayesh";
-  const githubToken = settings.githubToken || "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";
+  const username = settings.githubUsername || "";
+  const githubToken = settings.githubToken || "";
+  if (!username || !githubToken) {
+    ghDivThis.textContent = "Configure GitHub username and token in options.";
+    ghDivLast.textContent = "";
+    return;
+  }
   try {
     const now = new Date();
     const year = now.getFullYear();
