@@ -40,4 +40,7 @@
    - Subnet: usually `255.255.255.0`   
   - Save settings and reboot ESP.  
 
-Enjoy your Ambient Lighting WLED setup 🎉
+Enjoy your Lighting WLED setup 🎉
+![Sample](./images/sample.png)
+
+
