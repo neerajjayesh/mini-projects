@@ -41,6 +41,7 @@
   - Save settings and reboot ESP.  
 
 Enjoy your Lighting WLED setup 🎉
-![Sample](./images/sample.png)
+![Sample](./Images/Sample.png)
+
 
 
