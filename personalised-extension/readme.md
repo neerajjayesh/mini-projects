@@ -24,6 +24,8 @@ On a random lazy day I came across the badging in TryHackMe that showed the ifra
   - Set your own background image URL in the options page.
 - **Settings Page:**
   - Change your TryHackMe ID, GitHub username, GitHub token, and background image.
+ 
+![Newtab](./icons/Newtab.png)
 
 ## Setup & Installation
 
@@ -63,3 +65,4 @@ On a random lazy day I came across the badging in TryHackMe that showed the ifra
 ## Notes
 - This extension is for personal use and does not track or share your data.
 - Your GitHub token is stored locally in Chrome's sync storage.
+
