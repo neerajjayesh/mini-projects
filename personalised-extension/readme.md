@@ -41,6 +41,9 @@ On a random lazy day I came across the badging in TryHackMe that showed the ifra
 - Enter your TryHackMe ID, GitHub username, background image URL, and GitHub personal access token (PAT).
 - Save your settings.
 
+![Options page](./icons/Options.png)
+
+
 ### How to get a GitHub Personal Access Token
 1. Go to [GitHub Tokens](https://github.com/settings/tokens)
 2. Click **Generate new token**
@@ -65,4 +68,5 @@ On a random lazy day I came across the badging in TryHackMe that showed the ifra
 ## Notes
 - This extension is for personal use and does not track or share your data.
 - Your GitHub token is stored locally in Chrome's sync storage.
+
 
