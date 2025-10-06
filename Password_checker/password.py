@@ -47,11 +47,11 @@ def check_password_strength(password):
 
     # Overall feedback
     if score >= 8:
-        summary = "Strong password 💪"
+        summary = "Strong password"
     elif score >= 5:
-        summary = "Moderate password ⚠️"
+        summary = "Moderate password"
     else:
-        summary = "Weak password ❌"
+        summary = "Weak password"
 
     return score, summary, feedback
 
@@ -94,3 +94,4 @@ feedback_label = tk.Label(root, text="", font=("Arial", 10), fg="gray")
 feedback_label.pack(pady=5)
 
 root.mainloop()
+
