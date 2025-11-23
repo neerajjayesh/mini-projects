@@ -130,7 +130,7 @@ html, body {
 /* Position shortcuts box at leftmost bottom */
 .shortcuts-bottom {
   position: fixed;
-  left: 32px;
+  left: 448px; /* nudged right to avoid overlap with To-Do */
   bottom: 32px;
   z-index: 100;
   min-width: 220px;
@@ -141,6 +141,122 @@ html, body {
   padding: 16px 18px 12px 18px;
   margin: 0;
 }
+
+/* To-Do fixed card placement (left middle) */
+.todo-fixed {
+  position: fixed;
+  left: 32px;
+  bottom: 32px;
+  z-index: 120;
+  min-width: 240px;
+  max-width: 340px;
+  width: 100%;
+  padding: 16px 18px 12px 18px;
+  max-height: calc(100vh - 160px); /* allow growth upwards */
+  overflow-y: auto;
+}
+
+/* To-Do list styles */
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+.todo-list.fade-out { opacity: 0; transform: translateY(6px); }
+.todo-list.fade-in { opacity: 1; transform: translateY(0); }
+#todo-card { transition: height 0.35s ease; }
+.todo-empty {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,0,0,0.13);
+  border-radius: 8px;
+  padding: 8px 10px;
+  max-height: 60px; /* for collapse animation */
+  overflow: hidden;
+  transition: opacity 0.35s ease, max-height 0.35s ease, padding 0.35s ease, margin 0.35s ease;
+}
+.todo-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08));
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, box-shadow 0.25s, transform 0.12s;
+}
+.todo-item input[type="checkbox"]:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0.12));
+}
+.todo-item input[type="checkbox"]:active {
+  transform: scale(0.92);
+}
+.todo-item input[type="checkbox"]:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 2px;
+}
+.todo-item input[type="checkbox"]:checked {
+  background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.35));
+  box-shadow: 0 2px 8px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(0,0,0,0.25);
+}
+.todo-item input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 12px;
+  border: solid #111;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -55%) rotate(45deg);
+  pointer-events: none;
+}
+.todo-item.todo-completing {
+  opacity: 0;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+}
+.todo-text {
+  flex: 1;
+  color: #fff;
+  font-size: 0.98rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.todo-text.done {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+.todo-del {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--accent);
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.todo-del:hover { background: rgba(255,255,255,0.12); }
 #dynamic-logo {
   filter: none !important;
   -webkit-filter: none !important;
@@ -160,10 +276,38 @@ html, body {
 .gh-logo-img-wrap {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   height: 100%;
-  min-width: 44px;
+  min-width: 72px;
 }
+.gh-logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+  opacity: 0.95;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  pointer-events: none; /* decorative */
+}
+.gh-logo-abs { position:absolute; top:16px; right:18px; }
+#gh-card { position:relative; }
+.gh-logo-img-wrap:hover .gh-logo-img {
+  transform: scale(1.06);
+  opacity: 1;
+}
+/* Flex row layout for contributions text + logo */
+.gh-graph-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.gh-contrib-texts { flex: 1; }
 
 /* Style for GitHub contributions count value */
 .contrib-count-value {
@@ -283,6 +427,7 @@ body{
   backdrop-filter: blur(6px) saturate(1.05);
   -webkit-backdrop-filter: blur(6px);
   pointer-events:none;
+  z-index: 0; /* keep overlay behind main content */
 }
 
 /* overall container horizontally spaced */
@@ -293,13 +438,47 @@ body{
   padding:48px;
   box-sizing:border-box;
   gap:32px;
+  position: relative;
+  z-index: 1; /* ensure content sits above overlay */
 }
 
 /* left pane — left-aligned search */
 .left-pane{
   flex:1 1 60%;
   display:flex;
+  flex-direction: column; /* stack items vertically */
   align-items:flex-start;
+  gap: 14px; /* space between search and text */
+}
+
+/* Motivator text under search bar */
+.motivator-text{
+  margin-top: 0;
+  max-width: 720px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 500; /* medium */
+  font-size: clamp(18px, 2.6vw, 28px); /* slightly smaller */
+  line-height: 1.15;
+  color: #fff; /* solid, crisp white */
+  letter-spacing: 0.2px;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap; /* keep in a straight line */
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-text-stroke: 0;
+  -webkit-font-smoothing: auto;
+  text-rendering: geometricPrecision;
+  position: relative;
+  z-index: 2; /* explicitly above any overlays */
+}
+
+@media (max-width: 900px){
+  .motivator-text{
+    margin-top: 0;
+    font-size: clamp(20px, 5vw, 32px);
+    max-width: 100%;
+  }
 }
 
 /* Search box style */
@@ -432,3 +611,76 @@ body{
   .right-pane{ order:2; width:100%; flex-direction:row; justify-content:space-between; }
   .card{ width:48%; }
 }
+
+/* On smaller screens, keep both left aligned to avoid overflow */
+@media (max-width: 1100px) {
+  .shortcuts-bottom { left: 32px; }
+}
+
+/* Embedded external site card styles */
+.embedded-site { 
+  width:100%;
+  height:340px; /* fixed card height for consistent embedding */
+  min-height:220px;
+  max-height:620px;
+  display:flex;
+  flex-direction:column;
+}
+.embedded-site .card-body {
+  padding: 0; /* remove inner padding so iframe can reach edges */
+}
+.embedded-site-inner {
+  width:100%;
+  height:100%;
+  min-height:180px;
+  overflow:hidden;
+  border-radius:12px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+}
+.embedded-site-iframe {
+  --embedded-scale: 0.78; /* shrink factor: 0.78 = 78% zoom */
+  width: calc(100% / var(--embedded-scale));
+  height: calc(100% / var(--embedded-scale));
+  border: none;
+  border-radius:12px;
+  display:block;
+  transform: scale(var(--embedded-scale));
+  transform-origin: top left;
+  will-change: transform;
+}
+
+/* Optional: make scale slightly smaller on narrow screens */
+@media (max-width: 900px) {
+  .embedded-site-iframe { --embedded-scale: 0.68; }
+}
+@media (max-width:900px) {
+  .embedded-site-iframe { height:240px; }
+}
+
+/* Glassy buttons for To-Do and player controls */
+.yt-player-btn,
+#todo-add,
+.todo-del {
+  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+  border: 1px solid var(--glass-border);
+  color: var(--accent);
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.18s, transform 0.06s ease-in-out;
+}
+.todo-del { font-size: 12px; padding: 6px 8px; }
+.yt-player-btn:hover,
+#todo-add:hover,
+.todo-del:hover { background: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.10)); }
+.yt-player-btn:active,
+#todo-add:active,
+.todo-del:active { transform: scale(0.98); }
+.yt-player-btn:focus-visible,
+#todo-add:focus-visible,
+.todo-del:focus-visible { outline: 2px solid rgba(255,255,255,0.35); outline-offset: 2px; }
