@@ -17,6 +17,7 @@
       <form id="google-form" action="https://www.google.com/search" method="GET" target="_blank" autocomplete="off">
         <input id="q" name="q" type="search" placeholder="Search Google or type a URL" autofocus />
       </form>
+      <div class="motivator-text">You are still average.</div>
       <!-- Shortcuts Section at leftmost bottom, static links with favicons -->
       <!-- Shortcuts box moved outside main container for left-bottom placement -->
     </section>
@@ -25,7 +26,7 @@
     <aside class="right-pane">
       <!-- TryHackMe Badge -->
       <div class="card thm-card-glass" id="thm-card">
-        <div class="card-title" style="margin-bottom:4px;">TryHackMe Streak</div>
+        <div class="card-title" style="margin-bottom:4px;">TryHackMe</div>
         <div class="card-body thm-body-glass">
           <iframe id="thm-iframe" src="" class="thm-iframe-glass" scrolling="no" frameborder="0"></iframe>
         </div>
@@ -39,8 +40,18 @@
             <div id="gh-contrib-this" class="contrib-count-value">Loading...</div>
             <div id="gh-contrib-last" class="contrib-count-value" style="margin-top:10px;">Loading...</div>
           </div>
-            <div class="gh-logo-img-wrap" style="display:none;">
-            </div>
+        </div>
+        <div class="gh-logo-abs" aria-hidden="true"><img src="GitHub.png" alt="" class="gh-logo-img" /></div>
+      </div>
+
+      <!-- Embedded external site -->
+      <div class="card embedded-site" id="embedded-site-card">
+        <div class="card-title">115 Lab</div>
+        <div class="card-body" style="padding:8px;">
+          <div class="embedded-site-inner" style="width:100%;height:100%;">
+            <iframe id="embedded-site-iframe" class="embedded-site-iframe" src="https://cybersecurity-lab-register-duk.vercel.app/" title="Embedded Site" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts"></iframe>
+            <div id="embedded-site-fallback" style="display:none;padding:12px;text-align:center;color:var(--muted);font-size:0.95rem;">The site couldn't be embedded. <a id="embedded-open-link" href="#" target="_blank">Open it in a new tab</a>.</div>
+          </div>
         </div>
       </div>
     </aside>
@@ -49,6 +60,20 @@
   <button id="settings-btn" title="Extension Settings" style="position:fixed;bottom:36px;right:36px;z-index:200;background:rgba(255,255,255,0.13);border:1px solid var(--glass-border);border-radius:50%;width:54px;height:54px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.13);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;transition:background 0.18s;padding:0;">
     <img src="icons/setting.png" alt="Settings" style="width:30px;height:30px;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.13));user-select:none;pointer-events:none;" draggable="false" />
   </button>
+  
+  <!-- To-Do List card (left middle, next to embedded site area) -->
+  <div id="todo-card" class="card glass-shortcuts todo-fixed" aria-label="To-Do List">
+    <div class="shortcuts-title">To-Do</div>
+    <form id="todo-form" autocomplete="off" style="display:flex;gap:8px;align-items:center;margin-bottom:10px;">
+      <input id="todo-input" type="text" class="glass-input" placeholder="Add a task..." style="flex:1;max-width:none;width:100%;margin:0;" />
+      <button id="todo-add" type="submit" class="yt-player-btn" title="Add" style="white-space:nowrap;">Add</button>
+    </form>
+    <div style="display:flex;gap:8px;margin-bottom:10px;">
+      <button id="todo-toggle-completed" type="button" class="yt-player-btn" title="Show Completed Tasks" style="white-space:nowrap;">Show Completed</button>
+    </div>
+    <ul id="todo-list" class="todo-list"></ul>
+    <div id="todo-empty" class="todo-empty">No tasks yet</div>
+  </div>
   <script src="newtab.js"></script>
   <!-- Shortcuts box at leftmost bottom -->
   <div id="shortcuts-section" class="card glass-shortcuts shortcuts-bottom">
